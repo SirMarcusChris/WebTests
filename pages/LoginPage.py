@@ -33,3 +33,6 @@ class LoginPageHelper(BasePage):
         self.find_element(LoginPageLocators.VK_BUTTON)
         self.find_element(LoginPageLocators.MAIL_BUTTON)
         self.find_element(LoginPageLocators.YANDEX_BUTTON)
+
+    def click_login(self):
+        self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
