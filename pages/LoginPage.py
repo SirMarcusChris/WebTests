@@ -4,8 +4,8 @@ from selenium.webdriver.common.by import By
 class LoginPageLocators:
     LOGIN_TAB = (By.XPATH, '//*[@data-l="t,login_tab"]')
     LOGIN_BY_QR_TAB = (By.XPATH, '//*[@data-l="t,get_qr"]')
-    LOGIN_FIELD = (By.XPATH, 'field_email')  # Если есть id, можно написать By.ID и искать по ID
-    PASSWORD_FIELD = (By.XPATH, 'field_password')
+    LOGIN_FIELD = (By.ID, 'field_email')  # Если есть id, можно написать By.ID и искать по ID
+    PASSWORD_FIELD = (By.ID, 'field_password')
     LOGIN_BUTTON = (By.XPATH, '//*[@data-l="t,sign_in"]')
     LOGIN_BY_QR_BUTTON = (By.XPATH, '//*[@data-l="t,get_qr"]')
     FORGOT_PASSWORD_BUTTON = (By.XPATH, '//*[@data-l="t,restore"]')
@@ -36,5 +36,8 @@ class LoginPageHelper(BasePage):
     def click_login(self):
         self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
 
-    def get_error_text(self):
+    def get_login_error_text(self):
         return self.find_element(LoginPageLocators.ERROR_TEST).text  # Текст возвращается без указания круглых скобок
+
+    def get_password_error_text(self):
+        return self.find_element(LoginPageLocators.ERROR_TEST).send_keys('text')
