@@ -39,5 +39,8 @@ class LoginPageHelper(BasePage):
     def get_login_error_text(self):
         return self.find_element(LoginPageLocators.ERROR_TEST).text  # Текст возвращается без указания круглых скобок
 
+    def enter_text_in_login_field(self):
+        self.find_element(LoginPageLocators.LOGIN_FIELD).send_keys('aaaa')
+
     def get_password_error_text(self):
-        return self.find_element(LoginPageLocators.ERROR_TEST).send_keys('text')
+        return self.find_element(LoginPageLocators.ERROR_TEST).text
